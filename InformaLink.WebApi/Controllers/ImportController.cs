@@ -1,5 +1,6 @@
 ﻿using CsvHelper;
 using InformaLink.WebApi.Models.Csv;
+using InformaLink.WebApi.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
 
@@ -7,6 +8,13 @@ namespace InformaLink.WebApi.Controllers
 {
     public class ImportController : Controller
     {
+        private readonly PrimaryRepository primaryRepository;
+
+        public ImportController(PrimaryRepository primaryRepository)
+        {
+            this.primaryRepository = primaryRepository;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -25,6 +33,8 @@ namespace InformaLink.WebApi.Controllers
             {
                 var records = csv.GetRecords<PrimaryRecord>();
                 var arrayOfRecords = records.ToArray();
+
+                await primaryRepository.SaveRecords(arrayOfRecords);
 
                 return View("UploadCsv", arrayOfRecords);
             }
