@@ -1,17 +1,16 @@
-﻿using System;
+﻿using Flurl.Http;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Flurl.Http;
 
 namespace InformaLink.Client
 {
     public class InformationLinkClient
     {
+        private const string ApiHost = "https://localhost:7058";
+
         public Task<List<PrimaryRecord>> GetInfo()
         {
-            return "https://localhost:7058/api/primary".GetJsonAsync<List<PrimaryRecord>>();
+            return $"{ApiHost}/api/primary".GetJsonAsync<List<PrimaryRecord>>();
         }
     }
 }
