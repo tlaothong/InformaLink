@@ -6,7 +6,7 @@ namespace InformaLink.Client
 {
     public class InformationLinkClient
     {
-        private const string ApiHost = "https://localhost:7058";
+        private const string ApiHost = "https://informalink.azurewebsites.net";
 
         public Task<List<PrimaryRecord>> GetInfo()
         {
