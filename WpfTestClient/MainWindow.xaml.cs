@@ -30,9 +30,13 @@ namespace WpfTestClient
         private void button_Click(object sender, RoutedEventArgs e)
         {
             var client = new InformaLink.Client.InformationLinkClient();
-            client.GetInfo().ToObservable().Subscribe(_ =>
+            client.GetInfo().ToObservable().Subscribe(r =>
             {
-                MessageBox.Show("Hello?");
+                Dispatcher.Invoke(() =>
+                {
+                    r.ForEach(x => listBox.Items.Add(x.Name));
+                    MessageBox.Show("Hello?" + r.Count);
+                });
             });
         }
     }

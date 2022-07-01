@@ -9,9 +9,9 @@ namespace InformaLink.Client
 {
     public class InformationLinkClient
     {
-        public async Task GetInfo()
+        public Task<List<PrimaryRecord>> GetInfo()
         {
-            await "https://localhost:7058/api/primary".GetJsonAsync<List<PrimaryRecord>>();
+            return "https://localhost:7058/api/primary".GetJsonAsync<List<PrimaryRecord>>();
         }
     }
 }
