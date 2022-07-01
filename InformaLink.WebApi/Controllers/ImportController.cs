@@ -13,8 +13,12 @@ namespace InformaLink.WebApi.Controllers
         }
 
         [HttpPost]
+        [RequestSizeLimit(2_000_000)]
         public async Task<IActionResult> Index(IFormFile csvFile)
         {
+            if (csvFile == null)
+                return View("Error");
+
             using var rdr = csvFile.OpenReadStream();
             using var streamReader = new StreamReader(rdr);
             using (var csv = new CsvReader(streamReader, CultureInfo.InvariantCulture))
