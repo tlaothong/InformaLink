@@ -1,4 +1,5 @@
-﻿using InformaLink.WebApi.Models.Dbs;
+﻿using InformaLink.WebApi.Models;
+using InformaLink.WebApi.Models.Dbs;
 using InformaLink.WebApi.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -20,6 +21,12 @@ namespace InformaLink.WebApi.Controllers
         public Task<List<PrimeRecord>> GetMyRecords()
         {
             return primaryRepository.GetRecords();
+        }
+
+        [HttpPost("bystation")]
+        public Task<List<PrimeRecord>> GetRecordsByStations([FromBody] StationsQuery query)
+        {
+            return primaryRepository.GetRecordsByStations(query.StationIds);
         }
     }
 }

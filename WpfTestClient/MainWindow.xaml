@@ -7,8 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="30,31,0,0" VerticalAlignment="Top" Height="39" Width="113" Click="button_Click"/>
+        <Button x:Name="button" Content="Get Info" HorizontalAlignment="Left" Margin="30,31,0,0" VerticalAlignment="Top" Height="39" Width="113" Click="button_Click"/>
         <ListBox x:Name="listBox" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,90,0,0"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="164,33,0,0" TextWrapping="Wrap" Text="Station IDs separated by comma" VerticalAlignment="Top" Width="236" Height="18"/>
+        <Button x:Name="button1" Content="By Station" HorizontalAlignment="Left" Margin="429,31,0,0" VerticalAlignment="Top" Height="39" Width="82" Click="button1_Click"/>
 
     </Grid>
 </Window>

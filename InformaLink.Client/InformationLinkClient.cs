@@ -12,5 +12,15 @@ namespace InformaLink.Client
         {
             return $"{ApiHost}/api/primary".GetJsonAsync<List<PrimaryRecord>>();
         }
+
+        public async Task<List<PrimaryRecord>> GetInfoByStations(string[] stationIds)
+        {
+            var result = await $"{ApiHost}/api/primary/bystation".PostJsonAsync(new StationsQuery
+            {
+                StationIds = stationIds,
+            });
+
+            return await result.GetJsonAsync<List<PrimaryRecord>>();
+        }
     }
 }

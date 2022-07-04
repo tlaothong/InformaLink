@@ -46,5 +46,14 @@ namespace InformaLink.WebApi.Services
         {
             return _primeRecords.Find(Builders<PrimeRecord>.Filter.Empty).ToListAsync();
         }
+
+        public Task<List<PrimeRecord>> GetRecordsByStations(string[] stationIds
+            )
+        {
+            return _primeRecords.Find(
+                Builders<PrimeRecord>.Filter.Where(
+                    it => stationIds.Contains(it.Station)))
+                .ToListAsync();
+        }
     }
 }
