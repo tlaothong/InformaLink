@@ -39,5 +39,12 @@ namespace InformaLink.WebApi.Controllers
                 return View("UploadCsv", arrayOfRecords);
             }
         }
+
+        [HttpGet("deleteAll")]
+        public async Task<string> DeleteAll()
+        {
+            await primaryRepository.DeleteAllRecords();
+            return "Done";
+        }
     }
 }

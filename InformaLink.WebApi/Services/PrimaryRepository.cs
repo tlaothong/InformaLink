@@ -55,5 +55,10 @@ namespace InformaLink.WebApi.Services
                     it => stationIds.Contains(it.Station)))
                 .ToListAsync();
         }
+
+        public Task DeleteAllRecords()
+        {
+            return _primeRecords.DeleteManyAsync(Builders<PrimeRecord>.Filter.Empty);
+        }
     }
 }
